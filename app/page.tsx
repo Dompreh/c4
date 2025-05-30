@@ -7,7 +7,7 @@ import Loader from "./components/Loader";
 import { gsap } from "gsap"
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState(17 * 60 * 60); // 17 hours in seconds
+  const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 17 hours in seconds
   const textRef = useRef<HTMLParagraphElement>(null)
   const wordsRef = useRef<HTMLSpanElement[]>([])
 
