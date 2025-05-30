@@ -40,7 +40,7 @@ function Bomb({ timerText, ...props }: { timerText: string }) {
 
       {/* Red countdown text on screen */}
       <Text
-        position={[0.05, -0.3, -2.45]} // slightly in front of the plane
+        position={[0.07, -0.3, -2.45]} // slightly in front of the plane
         rotation={[-Math.PI / 2, 0, 0]}
         fontSize={0.43}
         color="red"
