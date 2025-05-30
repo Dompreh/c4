@@ -7,7 +7,13 @@ import Loader from "./components/Loader";
 import { gsap } from "gsap"
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 17 hours in seconds
+  const DETONATION_TIMESTAMP = new Date("2025-05-31T12:00:00Z").getTime(); // Set your desired date/time
+
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const now = Date.now();
+    const diffInSeconds = Math.max(Math.floor((DETONATION_TIMESTAMP - now) / 1000), 0);
+    return diffInSeconds;
+  }); // 17 hours in seconds
   const textRef = useRef<HTMLParagraphElement>(null)
   const wordsRef = useRef<HTMLSpanElement[]>([])
 
@@ -19,17 +25,16 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime <= 0) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prevTime - 1;
-      });
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const diff = Math.floor((DETONATION_TIMESTAMP - now) / 1000);
+      setTimeLeft(Math.max(diff, 0));
+
+      if (diff <= 0) clearInterval(interval);
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
+ 
   }, []);
 
   useEffect(() => {
