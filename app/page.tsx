@@ -7,7 +7,7 @@ import Loader from "./components/Loader";
 import { gsap } from "gsap"
 
 export default function Home() {
-  const DETONATION_TIMESTAMP = new Date("2025-06-01T18:00:00Z").getTime(); // Set your desired date/time
+  const DETONATION_TIMESTAMP = new Date("2025-06-03T08:00:00Z").getTime(); // Set your desired date/time
 
   const [timeLeft, setTimeLeft] = useState(() => {
     const now = Date.now();
